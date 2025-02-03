@@ -21,7 +21,7 @@ def test_double_dot():
     double_dot_in_username_in_the_start = "..testexample@domain.com"
     double_dot_in_username_in_the_middle = "test..example@domain.com"
     double_dot_in_username_in_the_end = "testexample..@domain.com"
-    
+
     double_dot_in_domain_in_the_start = "testexample@..domain.com"
     double_dot_in_domain_in_the_middle = "testexample@doma..in.com"
     double_dot_in_domain_in_the_end = "testexample@domain.com.."
@@ -29,7 +29,7 @@ def test_double_dot():
     assert validate_email(double_dot_in_username_in_the_start) == False
     assert validate_email(double_dot_in_username_in_the_middle) == False
     assert validate_email(double_dot_in_username_in_the_end) == False
-    
+
     assert validate_email(double_dot_in_domain_in_the_start) == False
     assert validate_email(double_dot_in_domain_in_the_middle) == False
     assert validate_email(double_dot_in_domain_in_the_end) == False

@@ -11,3 +11,6 @@ authors = [
 description = "Library for data validation"
 readme = "README.md"
 requires-python = ">=3.10"
+
+[tool.ruff.lint]
+ignore = ["E712"]
