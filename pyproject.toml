@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "validat"
+version = "0.0.2"
+authors = [
+    { name = "Aliaksei Yafremau", email = "447654972g@gmail.com"}
+]
+description = "Library for data validation"
+readme = "README.md"
+requires-python = ">=3.10"
