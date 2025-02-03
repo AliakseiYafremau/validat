@@ -1,16 +1,22 @@
-banned = {"!", "#", "$", "%", "^", "&", "*", "(", ")"}
+from validat.exceptions.base import EmailValidationError
 
 
-def validate_email(email: str) -> bool:
+def validate_email(email: str, raise_exception: bool = False) -> bool:
+    forbidden = set("!#$%^&*()")
     at_sign_count = email.count("@")
 
-    if at_sign_count != 1:
+    def error(error_type: Exception, message: str):
+        if raise_exception:
+            raise error_type(message)
         return False
+
+    if at_sign_count != 1:
+        return error(EmailValidationError, "Email must have exactly one @ sign")
 
     if len(email) > 254:
         return False
 
-    if banned.intersection(set(email)):
+    if forbidden.intersection(set(email)):
         return False
 
     if ".." in email:
