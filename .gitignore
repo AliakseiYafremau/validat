@@ -6,9 +6,5 @@ venv/
 dist/
 *.egg-info/
 __pycache__/
-<<<<<<< HEAD
-.tox/
-=======
 .tox/
 .ruff_cache/
->>>>>>> e7e2a7e (Add more validations)

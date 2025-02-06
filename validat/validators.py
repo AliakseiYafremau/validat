@@ -15,7 +15,7 @@ def validate_email(email: str, raise_exception: bool = False) -> bool:
 
     if len(email) > 254:
         return error(
-            EmailValidationError,"Email address cannot have more than 254 characters"
+            EmailValidationError, "Email address cannot have more than 254 characters"
         )
 
     if forbidden.intersection(set(email)):
