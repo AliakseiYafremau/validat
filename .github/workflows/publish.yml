@@ -111,6 +111,7 @@ jobs:
     - name: Download all the dists
       uses: actions/download-artifact@v4
       with:
+        verbose: true
         name: python-package-distributions
         path: dist/
     - name: Publish distribution 📦 to TestPyPI
