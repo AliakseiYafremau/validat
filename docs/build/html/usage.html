@@ -47,9 +47,13 @@
 <p>Here’s a simple example demonstrating how to use <strong>validat</strong>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">validat</span>
 
-<span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;username@example.com&quot;</span>
-<span class="n">is_valid</span> <span class="o">=</span> <span class="n">validat</span><span class="o">.</span><span class="n">validate_email</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+<span class="n">correct_email</span> <span class="o">=</span> <span class="s2">&quot;username@example.com&quot;</span>
+<span class="n">is_valid</span> <span class="o">=</span> <span class="n">validat</span><span class="o">.</span><span class="n">validate_email</span><span class="p">(</span><span class="n">correct_email</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_valid</span><span class="p">)</span> <span class="c1"># True</span>
+
+<span class="n">wrong_email</span> <span class="o">=</span> <span class="s2">&quot;username@@example.com&quot;</span>
+<span class="n">is_valid</span> <span class="o">=</span> <span class="n">validat</span><span class="o">.</span><span class="n">validate_email</span><span class="p">(</span><span class="n">wrong_email</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_valid</span><span class="p">)</span> <span class="c1"># False</span>
 </pre></div>
 </div>
 </section>
