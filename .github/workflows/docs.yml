@@ -13,8 +13,17 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: ammaraskar/sphinx-action@master
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Build Sphinx documentation
+      uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "docs/"
+    
+    - name: Deploy to Github Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/build/html
 
