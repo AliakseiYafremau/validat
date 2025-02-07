@@ -9,11 +9,6 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   docs:
     runs-on: ubuntu-latest
@@ -24,22 +19,16 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y python3-sphinx python3-sphinx-rtd-theme
-
-      - name: Проверка установки Sphinx
-        run: sphinx-build --version
+          sudo apt install -y python3-sphinx
 
       - name: Build Sphinx documentation
         run: |
           cd docs/ && make html
 
-      - name: Проверка содержимого папки перед загрузкой
-        run: ls -R docs/_build
-
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: docs/_build/html  # 🔹 Исправленный путь
+          path: docs/build/html
 
   deploy:
     needs: docs
