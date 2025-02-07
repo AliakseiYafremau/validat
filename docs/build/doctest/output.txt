@@ -1,0 +1,26 @@
+Results of doctest builder run on 2025-02-07 15:41:06
+=====================================================
+
+Document: usage
+---------------
+[31m**********************************************************************[0m
+File "usage.rst", line 28, in default
+Failed example:
+    validat.validate_email("1@mail.ri")
+Expected:
+    Tru
+Got:
+    True
+[31m**********************************************************************[0m
+1 item had failures:
+   1 of   2 in default
+2 tests in 1 item.
+[32m1 passed[0m and [31m1 failed[0m.
+[1;31m***Test Failed*** 1 failure[0m.
+
+Doctest summary
+===============
+    2 tests
+    1 failure in tests
+    0 failures in setup code
+    0 failures in cleanup code
