@@ -21,6 +21,10 @@ Here’s a simple example demonstrating how to use **validat**:
 
     import validat
     
-    email = "username@example.com"
-    is_valid = validat.validate_email(email)
+    correct_email = "username@example.com"
+    is_valid = validat.validate_email(correct_email)
     print(is_valid) # True
+
+    wrong_email = "username@@example.com"
+    is_valid = validat.validate_email(wrong_email)
+    print(is_valid) # False
