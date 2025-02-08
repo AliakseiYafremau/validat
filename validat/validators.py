@@ -9,7 +9,7 @@ def validate_email(
     tld: str = None,
 ) -> bool:
     """Validate email adress.
-    
+
     Args:
         email (str): Email address
         raise_exception (bool, optional): Raise exception if validation fails. Defaults to False.
