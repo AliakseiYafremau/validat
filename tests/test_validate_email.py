@@ -100,3 +100,42 @@ def test_tld_lenght():
 
     assert validate_email(email_with_insufficient_tld) == False
     assert validate_email(email_with_normal_tld) == True
+
+
+def test_exact_username():
+    """
+    Check for exact username in email
+    """
+    email = "testexample@domain.com"
+
+    correct_username = "testexample"
+    incorrect_username = "exampletest"
+
+    assert validate_email(email, username=correct_username) == True
+    assert validate_email(email, username=incorrect_username) == False
+
+
+def test_exact_domain():
+    """
+    Check for exact domain in email
+    """
+    email = "testexample@domain.com"
+
+    correct_domain = "domain"
+    incorrect_domain = "aiondom"
+
+    assert validate_email(email, domain_name=correct_domain) == True
+    assert validate_email(email, domain_name=incorrect_domain) == False
+
+
+def test_exact_tld():
+    """
+    Check for exact tld in email
+    """
+    email = "testexample@domain.com"
+
+    correct_tld = "com"
+    incorrect_tld = "net"
+
+    assert validate_email(email, tld=correct_tld) == True
+    assert validate_email(email, tld=incorrect_tld) == False

@@ -102,3 +102,36 @@ def test_exception_tld_lenght():
 
     with pytest.raises(EmailValidationError):
         validate_email(email_with_insufficient_tld, raise_exception=True)
+
+
+def test_exact_username():
+    """
+    Check for exact username in email
+    """
+    email = "testexample@domain.com"
+    incorrect_username = "exampletest"
+
+    with pytest.raises(EmailValidationError):
+        validate_email(email, raise_exception=True, username=incorrect_username)
+
+
+def test_exact_domain():
+    """
+    Check for exact domain in email
+    """
+    email = "testexample@domain.com"
+    incorrect_domain = "aindom"
+
+    with pytest.raises(EmailValidationError):
+        validate_email(email, raise_exception=True, domain_name=incorrect_domain)
+
+
+def test_exact_tld():
+    """
+    Check for exact tld in email
+    """
+    email = "testexample@domain.com"
+    incorrect_tld = "net"
+
+    with pytest.raises(EmailValidationError):
+        validate_email(email, raise_exception=True, tld=incorrect_tld)
