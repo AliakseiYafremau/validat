@@ -1,6 +1,6 @@
 import pytest
 
-from validat.validators import validate_email
+from validat.validators.email import validate_email
 from validat.exceptions.base import EmailValidationError
 
 

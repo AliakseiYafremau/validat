@@ -1,4 +1,9 @@
-__all__ = ["validate_email", "ValidatError", "EmailValidationError"]
+__all__ = [
+    "validate_email",
+    "ValidatError",
+    "EmailValidationError",
+    "PhoneValidationError",
+]
 
-from .validators import validate_email
-from .exceptions.base import ValidatError, EmailValidationError
+from .validators.email import validate_email
+from .exceptions.base import ValidatError, EmailValidationError, PhoneValidationError

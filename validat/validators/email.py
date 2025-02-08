@@ -1,4 +1,4 @@
-from validat.exceptions.base import EmailValidationError
+from validat.exceptions.base import EmailValidationError, get_exception_raiser
 
 
 def validate_email(
@@ -20,13 +20,10 @@ def validate_email(
     Returns:
         bool: True if email is valid. False if not.
     """
+    error = get_exception_raiser(raise_exception)
+
     forbidden = set("!#$%^&*()")
     at_sign_count = email.count("@")
-
-    def error(error_type: Exception, message: str):
-        if raise_exception:
-            raise error_type(message)
-        return False
 
     if at_sign_count != 1:
         return error(EmailValidationError, "Email address must have exactly one @ sign")
