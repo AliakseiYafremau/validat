@@ -47,10 +47,16 @@ def validate_email(email: str, raise_exception: bool = False) -> bool:
     if not domain:
         return error(EmailValidationError, "Email address must contain a domain")
 
+    if "." not in domain:
+        return error(EmailValidationError, "Domain must have at least one dot")
+
     if "." == domain[0]:
         return error(EmailValidationError, "Domain cannot begin with a dot")
 
     if "." == domain[-1]:
         return error(EmailValidationError, "Email address cannot end with a dot")
+
+    if len(domain[domain.find(".") + 1 :]) < 2:
+        return error(EmailValidationError, "TLD must be no shorter than 2 characters")
 
     return True
