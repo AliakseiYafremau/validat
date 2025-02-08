@@ -8,6 +8,18 @@ def validate_email(
     domain_name: str = None,
     tld: str = None,
 ) -> bool:
+    """Validate email adress.
+    
+    Args:
+        email (str): Email address
+        raise_exception (bool, optional): Raise exception if validation fails. Defaults to False.
+        username (str, optional): Username to validate. Defaults to None.
+        domain_name (str, optional): Domain name to validate. Defaults to None.
+        tld (str, optional): TLD(Top-Level-Domain) to validate. Defaults to None.
+
+    Returns:
+        bool: True if email is valid. False if not.
+    """
     forbidden = set("!#$%^&*()")
     at_sign_count = email.count("@")
 

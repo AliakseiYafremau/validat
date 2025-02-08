@@ -130,7 +130,7 @@ def test_exact_domain():
 
 def test_exact_tld():
     """
-    Check for exact tld in email
+    Check for exact TLD(Top-Level-Domain) in email
     """
     email = "testexample@domain.com"
 
