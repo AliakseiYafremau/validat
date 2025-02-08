@@ -1,7 +1,4 @@
-import pytest
-
 from validat.validators import validate_email
-from validat.exceptions.base import EmailValidationError
 
 
 def test_at_sign():
@@ -59,6 +56,15 @@ def test_single_dot_position():
     assert validate_email(dot_in_domain_in_the_end) == False
 
 
+def test_not_dot_in_domain():
+    """
+    Check for dot in domain
+    """
+    email_without_dot_in_domain = "testexample@domaincom"
+
+    assert validate_email(email_without_dot_in_domain) == False
+
+
 def test_incomplete_email():
     """
     Check for complete email adress
@@ -85,81 +91,51 @@ def test_spaces():
     assert validate_email(email_with_space_in_the_end) == False
 
 
-def test_exception_at_sign():
+def test_tld_lenght():
     """
-    Check for the number of @ signs
+    Check lenght of TLD(Top-Level-Domain)
     """
-    multiple_at_email = "@testemail@domain.com"
-    zero_at_email = "testemaildomain.com"
+    email_with_insufficient_tld = "testexample@domain.c"
+    email_with_normal_tld = "testexample@domain.co"
 
-    with pytest.raises(EmailValidationError):
-        validate_email(multiple_at_email, raise_exception=True)
-        validate_email(zero_at_email, raise_exception=True)
+    assert validate_email(email_with_insufficient_tld) == False
+    assert validate_email(email_with_normal_tld) == True
 
 
-def test_exception_double_dot():
+def test_exact_username():
     """
-    Check for two dots in a row
+    Check for exact username in email
     """
-    double_dot_in_username_in_the_start = "..testexample@domain.com"
-    double_dot_in_username_in_the_middle = "test..example@domain.com"
-    double_dot_in_username_in_the_end = "testexample..@domain.com"
+    email = "testexample@domain.com"
 
-    double_dot_in_domain_in_the_start = "testexample@..domain.com"
-    double_dot_in_domain_in_the_middle = "testexample@doma..in.com"
-    double_dot_in_domain_in_the_end = "testexample@domain.com.."
+    correct_username = "testexample"
+    incorrect_username = "exampletest"
 
-    with pytest.raises(EmailValidationError):
-        validate_email(double_dot_in_username_in_the_start, raise_exception=True)
-        validate_email(double_dot_in_username_in_the_middle, raise_exception=True)
-        validate_email(double_dot_in_username_in_the_end, raise_exception=True)
-
-        validate_email(double_dot_in_domain_in_the_start, raise_exception=True)
-        validate_email(double_dot_in_domain_in_the_middle, raise_exception=True)
-        validate_email(double_dot_in_domain_in_the_end, raise_exception=True)
+    assert validate_email(email, username=correct_username) == True
+    assert validate_email(email, username=incorrect_username) == False
 
 
-def test_exception_single_dot_position():
+def test_exact_domain():
     """
-    Check for point position
+    Check for exact domain in email
     """
-    dot_in_username_in_the_start = ".testexample@domain.com"
-    dot_in_username_in_the_end = "testexample.@domain.com"
+    email = "testexample@domain.com"
 
-    dot_in_domain_in_the_start = "testexample@.domain.com"
-    dot_in_domain_in_the_end = "testexample@domain.com."
+    correct_domain = "domain"
+    incorrect_domain = "aiondom"
 
-    with pytest.raises(EmailValidationError):
-        validate_email(dot_in_username_in_the_start, raise_exception=True)
-        validate_email(dot_in_username_in_the_end, raise_exception=True)
-
-        validate_email(dot_in_domain_in_the_start, raise_exception=True)
-        validate_email(dot_in_domain_in_the_end, raise_exception=True)
+    assert validate_email(email, domain_name=correct_domain) == True
+    assert validate_email(email, domain_name=incorrect_domain) == False
 
 
-def test_exception_incomplete_email():
+def test_exact_tld():
     """
-    Check for complete email adress
+    Check for exact TLD(Top-Level-Domain) in email
     """
-    email_without_username = "@domain.com"
-    email_without_domain = "testexample@"
+    email = "testexample@domain.com"
 
-    with pytest.raises(EmailValidationError):
-        validate_email(email_without_username, raise_exception=True)
-        validate_email(email_without_domain, raise_exception=True)
+    correct_tld = "com"
+    incorrect_tld = "net"
 
-
-def test_exception_spaces():
-    """
-    Check for spaces
-    """
-    email_with_space_in_username = "test example@domain.com"
-    email_with_space_in_domain = "testexample@dom ain.com"
-    email_with_space_in_the_start = " testexample@domain.com"
-    email_with_space_in_the_end = "testexample@domain.com "
-
-    with pytest.raises(EmailValidationError):
-        validate_email(email_with_space_in_username, raise_exception=True)
-        validate_email(email_with_space_in_domain, raise_exception=True)
-        validate_email(email_with_space_in_the_start, raise_exception=True)
-        validate_email(email_with_space_in_the_end, raise_exception=True)
+    assert validate_email(email, tld=correct_tld) == True
+    assert validate_email(email, tld=incorrect_tld) == False
