@@ -15,11 +15,11 @@ def validate_phone(
     """
     error = get_exception_raiser(raise_exception)
 
-    allowed_chars = set("0123456789+-(). ")
-    phone_with_only_digits = "".join([char for char in phone if char.isdigit()])
-
     if not phone:
         return error(PhoneValidationError, "Phone number cannot be empty")
+
+    allowed_chars = set("0123456789+-(). ")
+    phone_with_only_digits = "".join([char for char in phone if char.isdigit()])
 
     if (
         len(phone_with_only_digits) < min_length

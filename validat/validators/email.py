@@ -22,6 +22,9 @@ def validate_email(
     """
     error = get_exception_raiser(raise_exception)
 
+    if not email:
+        return error(EmailValidationError, "Email address cannot be empty")
+
     forbidden = set("!#$%^&*()")
     at_sign_count = email.count("@")
 
