@@ -1,4 +1,4 @@
-from validat.validators import validate_email
+from validat.validators.email import validate_email
 
 
 def test_at_sign():

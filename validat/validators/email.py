@@ -1,4 +1,4 @@
-from validat.exceptions.base import EmailValidationError
+from validat.exceptions.base import EmailValidationError, get_exception_raiser
 
 
 def validate_email(
@@ -20,13 +20,13 @@ def validate_email(
     Returns:
         bool: True if email is valid. False if not.
     """
+    error = get_exception_raiser(raise_exception)
+
+    if not email:
+        return error(EmailValidationError, "Email address cannot be empty")
+
     forbidden = set("!#$%^&*()")
     at_sign_count = email.count("@")
-
-    def error(error_type: Exception, message: str):
-        if raise_exception:
-            raise error_type(message)
-        return False
 
     if at_sign_count != 1:
         return error(EmailValidationError, "Email address must have exactly one @ sign")
@@ -80,20 +80,15 @@ def validate_email(
     if len(splitted_tld) < 2:
         return error(EmailValidationError, "TLD must be no shorter than 2 characters")
 
-    if username:
-        if splitted_username != username:
-            return error(EmailValidationError, "Email address has different username")
+    if username is not None and splitted_username != username:
+        return error(EmailValidationError, "Email address has different username")
 
-    if domain_name:
-        if splitted_domain_name != domain_name:
-            return error(
-                EmailValidationError, "Email address has different domain name"
-            )
+    if domain_name is not None and splitted_domain_name != domain_name:
+        return error(EmailValidationError, "Email address has different domain name")
 
-    if tld:
-        if splitted_tld != tld:
-            return error(
-                EmailValidationError, "Email address has different top level domain"
-            )
+    if tld is not None and splitted_tld != tld:
+        return error(
+            EmailValidationError, "Email address has different top level domain"
+        )
 
     return True
