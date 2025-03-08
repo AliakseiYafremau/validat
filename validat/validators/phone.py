@@ -1,4 +1,4 @@
-from validat.exceptions.base import PhoneValidationError, get_exception_raiser
+from validat.exceptions.base import PhoneValidationError, ErrorRaiser
 
 
 def validate_phone(
@@ -13,10 +13,12 @@ def validate_phone(
     Returns:
         bool: True if phone is valid. False if not.
     """
-    error = get_exception_raiser(raise_exception)
+    error = ErrorRaiser(
+        raise_exception=raise_exception, exception_type=PhoneValidationError
+    )
 
     if not phone:
-        return error(PhoneValidationError, "Phone number cannot be empty")
+        return error("Phone number cannot be empty")
 
     allowed_chars = set("0123456789+-(). ")
     phone_with_only_digits = "".join([char for char in phone if char.isdigit()])
@@ -26,13 +28,11 @@ def validate_phone(
         or len(phone_with_only_digits) > max_length
     ):
         return error(
-            PhoneValidationError,
             f"Phone number must be between {min_length} and {max_length} digits",
         )
 
     if set(phone).difference(set(phone).intersection(allowed_chars)):
         return error(
-            PhoneValidationError,
             "Phone number must contain only digits, +, -, (, ), ., and spaces",
         )
 
