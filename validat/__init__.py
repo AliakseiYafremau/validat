@@ -5,9 +5,15 @@ __all__ = [
     "ValidatError",
     "EmailValidationError",
     "PhoneValidationError",
+    "URLValidationError",
 ]
 
 from .validators.email import validate_email
 from .validators.phone import validate_phone
 from .validators.url import validate_url
-from .exceptions.base import ValidatError, EmailValidationError, PhoneValidationError, URLValidationError
+from .exceptions.base import (
+    ValidatError,
+    EmailValidationError,
+    PhoneValidationError,
+    URLValidationError,
+)
