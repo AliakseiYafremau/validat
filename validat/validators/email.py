@@ -80,20 +80,15 @@ def validate_email(
     if len(splitted_tld) < 2:
         return error(EmailValidationError, "TLD must be no shorter than 2 characters")
 
-    if username:
-        if splitted_username != username:
-            return error(EmailValidationError, "Email address has different username")
+    if username is not None and splitted_username != username:
+        return error(EmailValidationError, "Email address has different username")
 
-    if domain_name:
-        if splitted_domain_name != domain_name:
-            return error(
-                EmailValidationError, "Email address has different domain name"
-            )
+    if domain_name is not None and splitted_domain_name != domain_name:
+        return error(EmailValidationError, "Email address has different domain name")
 
-    if tld:
-        if splitted_tld != tld:
-            return error(
-                EmailValidationError, "Email address has different top level domain"
-            )
+    if tld is not None and splitted_tld != tld:
+        return error(
+            EmailValidationError, "Email address has different top level domain"
+        )
 
     return True

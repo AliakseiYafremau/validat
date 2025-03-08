@@ -27,3 +27,29 @@ def test_domain():
     assert validate_url(one_word_domain) == False
     assert validate_url(no_domain) == False
     assert validate_url(localhost_url) == True
+
+
+def test_exact_protocol():
+    """
+    Check for exact protocol in url
+    """
+    url = "https://example.com"
+
+    correct_protocol = "https://"
+    incorrect_protocol = "http://"
+
+    assert validate_url(url, protocol=correct_protocol) == True
+    assert validate_url(url, protocol=incorrect_protocol) == False
+
+
+def test_exact_authority():
+    """
+    Check for exact authority in url
+    """
+    url = "https://example.com"
+
+    correct_authority = "example.com"
+    incorrect_authority = "elpmaxe.com"
+
+    assert validate_url(url, authority=correct_authority) == True
+    assert validate_url(url, authority=incorrect_authority) == False
