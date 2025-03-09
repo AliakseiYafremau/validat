@@ -1,4 +1,7 @@
-from validat.exceptions.base import URLValidationError, get_exception_raiser
+from validat.exceptions.base import (
+    URLValidationError,
+    ErrorRaiser,
+)
 
 
 def validate_url(
@@ -13,7 +16,9 @@ def validate_url(
     Returns:
         bool: True if url is valid. False if not.
     """
-    error = get_exception_raiser(raise_exception)
+    error = ErrorRaiser(
+        raise_exception=raise_exception, exception_type=URLValidationError
+    )
 
     available_protocols = ["http://", "https://"]
     domain_index_start = url.find("://") + 3
@@ -28,19 +33,19 @@ def validate_url(
     authority_url = url[domain_index_start:domain_index_end]
 
     if "://" not in url:
-        return error(URLValidationError, "Url must contain protocol")
+        return error("Url must contain protocol")
 
     if protocol_url not in available_protocols:
-        return error(URLValidationError, f"Protocol '{protocol_url}' is not supported")
+        return error(f"Protocol '{protocol_url}' is not supported")
 
     if "." not in authority_url and authority_url != "localhost":
         print(authority_url)
-        return error(URLValidationError, "Invalid domain")
+        return error("Invalid domain")
 
     if protocol is not None and protocol != protocol_url:
-        return error(URLValidationError, "URL has different protocol")
+        return error("URL has different protocol")
 
     if authority is not None and authority != authority_url:
-        return error(URLValidationError, "URL has different authority")
+        return error("URL has different authority")
 
     return True
