@@ -10,11 +10,11 @@ def validate_url(
     """Validate url.
 
     Args:
-        url (str): Url
-        raise_exception (bool, optional): Raise exception if validation fails. Defaults to False.
+        **url** (str): Url \n
+        **raise_exception** (bool, optional): Raise exception if validation fails. Defaults to False. \n
 
     Returns:
-        bool: True if url is valid. False if not.
+        **bool**: True if url is valid. False if not.
     """
     error = ErrorRaiser(
         raise_exception=raise_exception, exception_type=URLValidationError
