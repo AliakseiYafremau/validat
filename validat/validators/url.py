@@ -20,6 +20,9 @@ def validate_url(
         raise_exception=raise_exception, exception_type=URLValidationError
     )
 
+    if not url:
+        return error("Url cannot be empty")
+
     available_protocols = ["http://", "https://"]
     domain_index_start = url.find("://") + 3
     domain_index_end = url[domain_index_start:].find("/")

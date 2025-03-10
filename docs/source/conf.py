@@ -1,6 +1,7 @@
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../../validat'))
+
+sys.path.insert(0, os.path.abspath("../../../validat"))
 
 
 # Configuration file for the Sphinx documentation builder.
@@ -20,7 +21,7 @@ release = "0.0.4"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx.ext.autodoc',
+    "sphinx.ext.autodoc",
 ]
 
 templates_path = ["_templates"]
