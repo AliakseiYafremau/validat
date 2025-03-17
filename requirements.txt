@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 alabaster==1.0.0
 babel==2.17.0
 build==1.2.2.post1
@@ -54,3 +55,5 @@ tox==4.24.2
 twine==6.1.0
 urllib3==2.3.0
 virtualenv==20.29.3
+=======
+>>>>>>> 9ee25856036540036a4eb255293467f7bfaeaebb

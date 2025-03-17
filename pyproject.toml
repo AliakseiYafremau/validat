@@ -11,6 +11,11 @@ authors = [
 description = "Library for data validation"
 readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+    "pytest>=8.3.5",
+    "ruff>=0.9.10",
+    "tox>=4.24.2",
+]
 
 [tool.ruff.lint]
 ignore = ["E712"]
