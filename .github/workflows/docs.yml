@@ -2,6 +2,8 @@ name: Deploy Sphinx Docs to GitHub Pages
 
 on:
   push:
+    paths:
+      - 'docs/**'
     branches:
       - main
   workflow_dispatch:
