@@ -18,7 +18,7 @@ def validate_email(
         **tld** (str, optional): TLD(Top-Level-Domain) to validate. Defaults to None. \n
 
     Returns:
-        bool: True if email is valid. False if not.
+        **bool**: True if email is valid. False if not.
     """
     error = ErrorRaiser(
         raise_exception=raise_exception, exception_type=EmailValidationError

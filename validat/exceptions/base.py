@@ -10,7 +10,8 @@ class ValidatError(Exception):
 
 class EmailValidationError(ValidatError):
     """
-    Email validation error"""
+    Email validation error
+    """
 
     pass
 
@@ -33,7 +34,8 @@ class URLValidationError(ValidatError):
 
 class ErrorRaiser:
     """
-    Error raiser"""
+    Error raiser
+    """
 
     def __init__(self, raise_exception: bool, exception_type: ValidatError):
         self.raise_exception = raise_exception
