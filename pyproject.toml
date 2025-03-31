@@ -12,12 +12,15 @@ description = "Library for data validation"
 readme = "README.md"
 requires-python = ">=3.10"
 
-[tool.ruff.lint]
-ignore = ["E712"]
-
 [dependency-groups]
 dev = [
     "pytest>=8.3.5",
     "ruff>=0.11.2",
     "tox>=4.25.0",
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff.lint]
+ignore = ["E712"]
