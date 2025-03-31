@@ -11,14 +11,14 @@ def validate_email(
     """Validate email adress.
 
     Args:
-        email (str): Email address
-        raise_exception (bool, optional): Raise exception if validation fails. Defaults to False.
-        username (str, optional): Username to validate. Defaults to None.
-        domain_name (str, optional): Domain name to validate. Defaults to None.
-        tld (str, optional): TLD(Top-Level-Domain) to validate. Defaults to None.
+        **email** (str): Email address \n
+        **raise_exception** (bool, optional): Raise exception if validation fails. Defaults to False. \n
+        **username** (str, optional): Username to validate. Defaults to None. \n
+        **domain_name** (str, optional): Domain name to validate. Defaults to None. \n
+        **tld** (str, optional): TLD(Top-Level-Domain) to validate. Defaults to None. \n
 
     Returns:
-        bool: True if email is valid. False if not.
+        **bool**: True if email is valid. False if not.
     """
     error = ErrorRaiser(
         raise_exception=raise_exception, exception_type=EmailValidationError

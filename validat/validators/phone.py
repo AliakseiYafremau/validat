@@ -7,11 +7,11 @@ def validate_phone(
     """Validate phone number.
 
     Args:
-        phone (str): Phone number
-        raise_exception (bool, optional): Raise exception if validation fails. Defaults to False.
+        **phone** (str): Phone number \n
+        **raise_exception** (bool, optional): Raise exception if validation fails. Defaults to False. \n
 
     Returns:
-        bool: True if phone is valid. False if not.
+        **bool**: True if phone is valid. False if not.
     """
     error = ErrorRaiser(
         raise_exception=raise_exception, exception_type=PhoneValidationError
