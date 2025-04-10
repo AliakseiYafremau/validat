@@ -66,9 +66,9 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/<package-name>  # Replace <package-name> with your PyPI project name
+      url: https://pypi.org/p/validat
     permissions:
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
+      id-token: write
 
     steps:
     - name: Download all the dists
@@ -88,10 +88,10 @@ jobs:
 
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/<package-name>
+      url: https://test.pypi.org/p/validat
 
     permissions:
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
+      id-token: write
 
     steps:
     - name: Download all the dists

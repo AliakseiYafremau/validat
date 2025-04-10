@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "validat"
-version = "0.0.5"
+version = "0.0.6"
 authors = [
     { name = "Aliaksei Yafremau", email = "447654972g@gmail.com"}
 ]
