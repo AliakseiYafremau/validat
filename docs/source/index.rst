@@ -17,7 +17,6 @@ Features
 * Detailed error messages
 * Customizable validation parameters
 * Exception handling support
-* High performance
 
 Installation
 ------------

@@ -20,31 +20,20 @@ Getting Started
 
     uv sync --all-groups
 
-Code Style
-----------
+Testing and Linting
+-------------------
 
-We follow PEP 8 style guide for Python code. To ensure your code meets our standards:
+You can lint and run pytest using tox::
 
-1. Install development tools::
+    tox
 
-    pip install ruff black
+or do it separately::
 
-2. Format your code::
+    # Linting
+    ruff check
+    ruff format --check
 
-    black .
-    ruff check .
-
-Testing
--------
-
-We use pytest for testing. To run tests:
-
-1. Install test dependencies::
-
-    pip install pytest
-
-2. Run tests::
-
+    # Run tests
     pytest
 
 Writing Tests
@@ -59,10 +48,8 @@ Writing Tests
 Documentation
 -------------
 
-We use Sphinx for documentation. To build the documentation:
+We use Sphinx for documentation. To build the documentation::
 
-.. code-block:: bash
-    
     make html -C docs
 
 License
