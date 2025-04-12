@@ -4,9 +4,9 @@ from validat.exceptions.base import EmailValidationError, ErrorRaiser
 def validate_email(
     email: str,
     raise_exception: bool = False,
-    username: str = None,
-    domain_name: str = None,
-    tld: str = None,
+    username: str | None = None,
+    domain_name: str | None = None,
+    tld: str | None = None,
 ) -> bool:
     """Validate email adress.
 

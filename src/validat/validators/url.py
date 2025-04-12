@@ -5,7 +5,10 @@ from validat.exceptions.base import (
 
 
 def validate_url(
-    url: str, raise_exception: bool = False, protocol: str = None, authority: str = None
+    url: str,
+    raise_exception: bool = False,
+    protocol: str | None = None,
+    authority: str | None = None,
 ) -> bool:
     """Validate url.
 

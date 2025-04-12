@@ -37,7 +37,7 @@ class ErrorRaiser:
     Error raiser
     """
 
-    def __init__(self, raise_exception: bool, exception_type: ValidatError):
+    def __init__(self, raise_exception: bool, exception_type: type[ValidatError]):
         self.raise_exception = raise_exception
         self.exception_type = exception_type
 
