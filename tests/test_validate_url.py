@@ -1,10 +1,8 @@
 from validat.validators.url import validate_url
 
 
-def test_correct_protocol():
-    """
-    Check for protocols
-    """
+def test_correct_protocol() -> None:
+    """Check for protocols."""
     http_url = "http://example.com"
     https_url = "https://example.com"
     incorrect_protocol_url = "incorrect://example.com"
@@ -14,10 +12,8 @@ def test_correct_protocol():
     assert validate_url(incorrect_protocol_url) == False
 
 
-def test_domain():
-    """
-    Check for domain
-    """
+def test_domain() -> None:
+    """Check for domain."""
     domain_url = "https://example.com"
     one_word_domain = "https://example"
     no_domain = "https://"
@@ -29,10 +25,8 @@ def test_domain():
     assert validate_url(localhost_url) == True
 
 
-def test_exact_protocol():
-    """
-    Check for exact protocol in url
-    """
+def test_exact_protocol() -> None:
+    """Check for exact protocol in url."""
     url = "https://example.com"
 
     correct_protocol = "https://"
@@ -42,10 +36,8 @@ def test_exact_protocol():
     assert validate_url(url, protocol=incorrect_protocol) == False
 
 
-def test_exact_authority():
-    """
-    Check for exact authority in url
-    """
+def test_exact_authority() -> None:
+    """Check for exact authority in url."""
     url = "https://example.com"
 
     correct_authority = "example.com"

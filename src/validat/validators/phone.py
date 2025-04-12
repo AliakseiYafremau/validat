@@ -1,4 +1,4 @@
-from validat.exceptions.base import PhoneValidationError, ErrorRaiser
+from validat.exceptions.base import ErrorRaiser, PhoneValidationError
 
 
 def validate_phone(
@@ -12,6 +12,7 @@ def validate_phone(
 
     Returns:
         **bool**: True if phone is valid. False if not.
+
     """
     error = ErrorRaiser(
         raise_exception=raise_exception, exception_type=PhoneValidationError

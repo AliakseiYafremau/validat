@@ -19,6 +19,7 @@ def validate_email(
 
     Returns:
         **bool**: True if email is valid. False if not.
+
     """
     error = ErrorRaiser(
         raise_exception=raise_exception, exception_type=EmailValidationError
@@ -52,10 +53,10 @@ def validate_email(
     if not splitted_username:
         return error("Email address must contain a username")
 
-    if "." == splitted_username[0]:
+    if splitted_username[0] == ".":
         return error("Email address cannot begin with a dot")
 
-    if "." == splitted_username[-1]:
+    if splitted_username[-1] == ".":
         return error("Username cannot end with a dot")
 
     if not splitted_domain:
@@ -64,10 +65,10 @@ def validate_email(
     if "." not in splitted_domain:
         return error("Domain must have at least one dot")
 
-    if "." == splitted_domain[0]:
+    if splitted_domain[0] == ".":
         return error("Domain cannot begin with a dot")
 
-    if "." == splitted_domain[-1]:
+    if splitted_domain[-1] == ".":
         return error("Email address cannot end with a dot")
 
     splitted_tld = splitted_domain[splitted_domain.find(".") + 1 :]

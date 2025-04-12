@@ -1,23 +1,19 @@
 import pytest
 
-from validat.validators.url import validate_url
 from validat.exceptions.base import URLValidationError
+from validat.validators.url import validate_url
 
 
-def test_exception_correct_protocol():
-    """
-    Check for protocols
-    """
+def test_exception_correct_protocol() -> None:
+    """Check for protocols."""
     incorrect_protocol_url = "incorrect://example.com"
 
     with pytest.raises(URLValidationError):
         validate_url(incorrect_protocol_url, raise_exception=True)
 
 
-def test_exception_domain():
-    """
-    Check for domain
-    """
+def test_exception_domain() -> None:
+    """Check for domain."""
     one_word_domain = "https://example"
     no_domain = "https://"
 
@@ -26,10 +22,8 @@ def test_exception_domain():
         validate_url(no_domain, raise_exception=True)
 
 
-def test_exact_protocol():
-    """
-    Check for exact protocol in url
-    """
+def test_exact_protocol() -> None:
+    """Check for exact protocol in url."""
     url = "https://example.com"
 
     incorrect_protocol = "http://"
@@ -38,10 +32,8 @@ def test_exact_protocol():
         validate_url(url, raise_exception=True, protocol=incorrect_protocol)
 
 
-def test_exact_authority():
-    """
-    Check for exact authority in url
-    """
+def test_exact_authority() -> None:
+    """Check for exact authority in url."""
     url = "https://example.com"
 
     incorrect_authority = "elpmaxe.com"

@@ -1,6 +1,6 @@
 from validat.exceptions.base import (
-    URLValidationError,
     ErrorRaiser,
+    URLValidationError,
 )
 
 
@@ -14,10 +14,12 @@ def validate_url(
 
     Args:
         **url** (str): Url \n
-        **raise_exception** (bool, optional): Raise exception if validation fails. Defaults to False. \n
+        **raise_exception** (bool, optional): Raise exception if validation fails. \
+            Defaults to False. \n
 
     Returns:
         **bool**: True if url is valid. False if not.
+
     """
     error = ErrorRaiser(
         raise_exception=raise_exception, exception_type=URLValidationError
@@ -45,7 +47,6 @@ def validate_url(
         return error(f"Protocol '{protocol_url}' is not supported")
 
     if "." not in authority_url and authority_url != "localhost":
-        print(authority_url)
         return error("Invalid domain")
 
     if protocol is not None and protocol != protocol_url:
