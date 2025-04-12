@@ -14,8 +14,6 @@ jobs:
     tests:
         name: Test using tox 🔎
         runs-on: ubuntu-latest
-        env: 
-            UV_CACHE_DIR: /tmp/.uv-cache
         strategy:
             matrix:
                 python-version: ["3.10", "3.11", "3.12", "3.13"]
@@ -28,6 +26,7 @@ jobs:
               with:
                   enable-cache: true
                   cache-dependency-glob: "uv.lock"
+                  cache-local-path: "/tmp/.uv-cache"
 
             - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v5
