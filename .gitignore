@@ -5,11 +5,15 @@ venv/
 # Packaging
 dist/
 *.egg-info/
-__pycache__/
-.tox/
-.ruff_cache/
 uv.lock
 
 # Sphinx Documentation
 build/
 build/*
+
+# Cache
+__pycache__/
+.tox/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
