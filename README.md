@@ -6,6 +6,10 @@
 
 Validat is a Python library for data validation. It provides a simple and flexible way to validate data structures, ensuring that your data meets the required criteria.
 
+## Documentation
+
+For more detailed information, please refer to the [official documentation](https://aliakseiyafremau.github.io/validat/).
+
 ## Features
 
 - Easy to use and integrate
@@ -36,7 +40,3 @@ wrong_email = "username@@example.com"
 is_valid = validat.validate_email(wrong_email)
 print(is_valid) # False
 ```
-
-## Documentation
-
-For more detailed information, please refer to the [official documentation](https://aliakseiyafremau.github.io/validat/).
