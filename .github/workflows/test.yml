@@ -25,7 +25,6 @@ jobs:
               uses: astral-sh/setup-uv@v5
               with:
                   enable-cache: true
-                  cache-dependency-glob: "uv.lock"
                   cache-local-path: "/tmp/.uv-cache"
 
             - name: Set up Python ${{ matrix.python-version }}
