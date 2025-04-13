@@ -81,7 +81,6 @@ Parameters
 ^^^^^^^^^^
 
 * **phone** (str): The phone number to validate
-* **raise_exception** (bool, optional): If True, raises an exception on validation failure. Defaults to False.
 * **min_length** (int, optional): Minimum length of the phone number. Defaults to 7.
 * **max_length** (int, optional): Maximum length of the phone number. Defaults to 15.
 
@@ -96,19 +95,13 @@ Example usage:
 
     import validat
 
-    # Basic phone validation
-    is_valid = validat.validate_phone("+1234567890")
-
-    # With custom length validation
-    is_valid = validat.validate_phone(
-        "+1234567890",
-        min_length=10,
-        max_length=15
-    )
-
-    # With exception raising
     try:
-        validat.validate_phone("123", raise_exception=True)
+        validat.validate_phone("+1234567890")
+    except validat.exceptions.PhoneValidationError as e:
+        print(f"Validation failed: {e}")
+
+    try:
+        validat.validate_phone("123")
     except validat.exceptions.PhoneValidationError as e:
         print(f"Validation failed: {e}")
 

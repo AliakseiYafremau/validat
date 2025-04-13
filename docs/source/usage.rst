@@ -50,18 +50,18 @@ The phone number validator checks if a phone number follows international standa
     # Simple phone validation
     # Checks if the phone number follows international format
     phone = "+1234567890"
-    if validat.validate_phone(phone):
-        print("Valid phone number")
-    else:
-        print("Invalid phone number")
+    try:
+        validat.validate_phone(phone)
+    except validat.PhoneValidationError as e:
+        print(f"Phone validation failed: {e}")
 
     # Phone validation with length constraints
     # Ensures the phone number has a specific length range
     phone = "+1234567890"
-    if validat.validate_phone(phone, min_length=10, max_length=15):
-        print("Valid phone number length")
-    else:
-        print("Invalid phone number length")
+    try:
+        validat.validate_phone(phone, min_length=10, max_length=15)
+    except validat.PhoneValidationError as e:
+        print(f"Phone validation failed: {e}")
 
 URL Validation
 ~~~~~~~~~~~~~~
@@ -126,7 +126,7 @@ When working with validation in production environments, it's often better to ha
             print("Email is valid")
 
             # Validate phone
-            validat.validate_phone(phone, raise_exception=True)
+            validat.validate_phone(phone)
             print("Phone is valid")
 
             # Validate URL
@@ -179,8 +179,7 @@ You can create custom validation functions that wrap the base validators with sp
         return validat.validate_phone(
             phone,
             min_length=10,
-            max_length=15,
-            raise_exception=True
+            max_length=15
         )
 
     def validate_secure_url(url):

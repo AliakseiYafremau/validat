@@ -43,16 +43,6 @@ Here's a simple example demonstrating how to use **validat**:
    is_valid = validat.validate_email(wrong_email)
    print(is_valid)  # False
 
-   # Phone validation
-   correct_phone = "+1234567890"
-   is_valid = validat.validate_phone(correct_phone)
-   print(is_valid)  # True
-
-   # URL validation
-   correct_url = "https://example.com"
-   is_valid = validat.validate_url(correct_url)
-   print(is_valid)  # True
-
 Documentation Contents
 ----------------------
 .. toctree::
