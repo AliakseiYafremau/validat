@@ -6,7 +6,6 @@ def validate_phone(phone: str, min_length: int = 7, max_length: int = 15) -> boo
 
     Args:
         **phone** (str): Phone number \n
-        **raise_exception** (bool, optional): Raise exception if validation fails. Defaults to False. \n
 
     Returns:
         **bool**: True if phone is valid. False if not.

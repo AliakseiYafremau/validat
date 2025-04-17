@@ -17,26 +17,29 @@ The email validator checks if an email address follows the standard format and c
 
     # Simple email validation
     email = "user@example.com"
-    if validat.validate_email(email):
+    try:
+        validat.validate_email(email)
         print("Valid email")
-    else:
-        print("Invalid email")
+    except validat.EmailValidationError as e:
+        print(f"Email validation failed: {e}")
 
     # Email validation with custom domain
     # This ensures the email is from a specific domain
     email = "user@company.com"
-    if validat.validate_email(email, domain_name="company.com"):
+    try:
+        validat.validate_email(email, domain_name="company.com")
         print("Valid company email")
-    else:
-        print("Invalid company email")
+    except validat.EmailValidationError as e:
+        print(f"Email validation failed: {e}")
 
     # Email validation with TLD check
     # This ensures the email has a specific top-level domain
     email = "user@example.com"
-    if validat.validate_email(email, tld="com"):
+    try:
+        validat.validate_email(email, tld="com")
         print("Valid .com email")
-    else:
-        print("Invalid .com email")
+    except validat.EmailValidationError as e:
+        print(f"Email validation failed: {e}")
 
 Phone Number Validation
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,77 +78,32 @@ The URL validator checks if a URL follows the standard format and can validate s
     # Simple URL validation
     # Checks if the URL follows standard format
     url = "https://example.com"
-    if validat.validate_url(url):
+    try:
+        validat.validate_url(url)
         print("Valid URL")
-    else:
-        print("Invalid URL")
+    except validat.URLValidationError as e:
+        print(f"URL validation failed: {e}")
 
     # URL validation with protocol check
     # Ensures the URL uses a specific protocol (e.g., HTTPS)
     url = "https://example.com"
-    if validat.validate_url(url, protocol="https"):
+    try:
+        validat.validate_url(url, protocol="https")
         print("Valid HTTPS URL")
-    else:
-        print("Invalid HTTPS URL")
+    except validat.URLValidationError as e:
+        print(f"URL validation failed: {e}")
 
     # URL validation with authority check
     # Ensures the URL has a specific domain
     url = "https://example.com"
-    if validat.validate_url(url, authority="example.com"):
+    try:
+        validat.validate_url(url, authority="example.com")
         print("Valid domain")
-    else:
-        print("Invalid domain")
+    except validat.URLValidationError as e:
+        print(f"URL validation failed: {e}")
 
 Advanced Usage
 --------------
-
-Error Handling
-~~~~~~~~~~~~~~
-
-When working with validation in production environments, it's often better to handle exceptions rather than just checking boolean results. This allows for more detailed error reporting.
-
-.. code-block:: python
-
-    import validat
-    from validat.exceptions import (
-        EmailValidationError,
-        PhoneValidationError,
-        URLValidationError
-    )
-
-    def validate_user_data(email, phone, url):
-        """
-        Validate user data with detailed error handling.
-        
-        This function demonstrates how to use exception handling
-        to provide detailed feedback about validation failures.
-        """
-        try:
-            # Validate email
-            validat.validate_email(email, raise_exception=True)
-            print("Email is valid")
-
-            # Validate phone
-            validat.validate_phone(phone)
-            print("Phone is valid")
-
-            # Validate URL
-            validat.validate_url(url, raise_exception=True)
-            print("URL is valid")
-
-        except EmailValidationError as e:
-            print(f"Email validation failed: {e}")
-        except PhoneValidationError as e:
-            print(f"Phone validation failed: {e}")
-        except URLValidationError as e:
-            print(f"URL validation failed: {e}")
-
-    # Example usage
-    validate_user_data(
-        email="user@example.com",
-        phone="+1234567890",
-        url="https://example.com"
-    )
 
 Custom Validation Rules
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -165,8 +123,7 @@ You can create custom validation functions that wrap the base validators with sp
         """
         return validat.validate_email(
             email,
-            domain_name="company.com",
-            raise_exception=True
+            domain_name="company.com"
         )
 
     def validate_international_phone(phone):
@@ -191,8 +148,7 @@ You can create custom validation functions that wrap the base validators with sp
         """
         return validat.validate_url(
             url,
-            protocol="https",
-            raise_exception=True
+            protocol="https"
         )
 
     # Example usage
