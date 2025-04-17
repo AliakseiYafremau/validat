@@ -32,11 +32,17 @@ Here's a basic example of how to use Validat:
 ```python
 import validat
 
-correct_email = "username@example.com"
-is_valid = validat.validate_email(correct_email)
-print(is_valid) # True
+try:
+    # returns True 
+    correct_email = "username@example.com"
+    is_valid = validat.validate_email(correct_email)
+except validat.EmailValidationError as e:
+    print(f"Email validation error: {e.message}")
 
-wrong_email = "username@@example.com"
-is_valid = validat.validate_email(wrong_email)
-print(is_valid) # False
+try:
+    # raises EmailValidationError
+    wrong_email = "username@@example.com"
+    is_valid = validat.validate_email(wrong_email)
+except validat.EmailValidationError as e:
+    print(f"Email validation error: {e.message}")
 ```
