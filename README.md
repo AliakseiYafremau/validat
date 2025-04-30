@@ -14,7 +14,6 @@ For more detailed information, please refer to the [official documentation](http
 
 - Easy to use and integrate
 - Supports various data types and structures
-- Customizable validation rules
 - Detailed error messages
 
 ## Installation
